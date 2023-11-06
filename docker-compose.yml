@@ -8,6 +8,14 @@ services:
       POSTGRES_PASSWORD: postgrespw
       POSTGRES_DB: Auctions
     volumes:
-      - pgdata:/var/lib/postgresql/data
-volumes:
-  pgdata:
+      - /var/lib/postgresql/data
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: mongopw
+    volumes:
+      - /data/db
+
